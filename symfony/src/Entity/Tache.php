@@ -25,7 +25,7 @@ class Tache
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Listing::class, mappedBy="tache")
+     * @ORM\OneToMany(targetEntity=Listing::class, mappedBy="tache", cascade={"remove"})
      */
     private $listings;
 
