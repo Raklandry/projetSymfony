@@ -6,14 +6,43 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+            <link rel="stylesheet" href="{{ asset('jquery-ui-1.13.2/jquery-ui.css')}}">
+            <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css')}}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+            {# <script src="{{ asset('jquery-ui-1.13.2/external/jquery/jquery.js')}}"></script> #}
+	        <script src="{{ asset('js/jquery-3.1.1.min.js')}}"></script>
+	        <script src="{{ asset('jquery-ui-1.13.2/jquery-ui.js')}}"></script>
+	        <script src="{{ asset('js/popper.min.js')}}"></script>
+	        <script src="{{ asset('js/bootstrap.min.js')}}"></script>
         {% endblock %}
     </head>
     <body>
+        <div class="container">
+            <div class="row my-5">
+
+                <div class="col-md-12 text-center">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success alert-dismissible fade show">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>{{message}}</strong>
+                        </div>
+                    {% endfor %}
+                    {% for message in app.flashes('warning') %}
+                        <div class="alert alert-warning alert-dismissible fade show">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>{{message}}</strong>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <h1>TÂCHES</h1>
+                </div>
+            </div>
+        </div>
         {% block body %}{% endblock %}
     </body>
 </html>
